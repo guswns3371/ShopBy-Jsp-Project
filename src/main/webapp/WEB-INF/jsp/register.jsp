@@ -21,19 +21,19 @@
             <form action="/user/register" method="post">
                 <div class="col-form-label-lg">
                     <input type="text" class="input-group"
-                           placeholder="ID"
+                           placeholder="ID (3~14)"
                            id="user_id" name="user_id" required>
                 </div>
 
                 <div class="col-form-label-lg">
                     <input type="text" class="input-group"
-                           placeholder="NAME"
+                           placeholder="NAME (3~14)"
                            id="user_name" name="user_name" required>
                 </div>
 
                 <div class="col-form-label-lg">
                     <input type="password" class="input-group"
-                           placeholder="PASSWORD"
+                           placeholder="PASSWORD (5~14)"
                            id="user_password" name="user_password" required>
                 </div>
 
@@ -50,7 +50,7 @@
 
         </div>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <span class="alert-danger">${param.message}</span>
+            <span class="alert-danger">${message}</span>
         </div>
     </div>
 </section>

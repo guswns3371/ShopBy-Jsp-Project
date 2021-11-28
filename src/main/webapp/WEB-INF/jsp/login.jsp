@@ -42,7 +42,7 @@
         </div>
 
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <span class="alert-danger">${param.message}</span>
+            <span class="alert-danger">${message}</span>
         </div>
     </div>
 </section>

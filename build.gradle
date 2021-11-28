@@ -34,6 +34,12 @@ dependencies {
 
     // mysql
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
+
+    // Bcrypt 패스워드 암호화
+    implementation group: 'org.mindrot', name: 'jbcrypt', version: '0.3m'
+
+    // jsoup for crawling
+    implementation group: 'org.jsoup', name: 'jsoup', version: '1.11.3'
 }
 
 test {

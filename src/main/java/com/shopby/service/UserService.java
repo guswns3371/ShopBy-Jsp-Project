@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -16,6 +18,10 @@ public class UserService {
     @Transactional
     public User save(User user) {
         return userRepository.save(user);
+    }
+
+    public Optional<User> findByUserId(String userId) {
+        return userRepository.findUserByUserId(userId);
     }
 
     public boolean checkLoginData(String userId, String userPassword) {
