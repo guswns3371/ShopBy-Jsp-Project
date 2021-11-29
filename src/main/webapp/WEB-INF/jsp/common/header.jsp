@@ -9,4 +9,11 @@
             <p class="lead fw-normal text-white-50 mb-0">👔🧣🧤🧦👞👟</p>
         </div>
     </div>
+
+<%--    <div class="container px-4 px-lg-5 my-3">--%>
+<%--        <div class="row gx-4 gx-lg-5 justify-content-center text-center text-white">--%>
+<%--            <span class="col mb-5 mb-0"><a class="nav-link text-white" href="#">GS SHOP</a></span>--%>
+<%--            <span class="col mb-5 mb-0"><a class="nav-item text-white-50" href="#">11번가</a></span>--%>
+<%--        </div>--%>
+<%--    </div>--%>
 </header>

@@ -11,14 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 
 @Slf4j
@@ -56,7 +52,7 @@ public class UserController {
             if (encryptHelper.isMatch(userPassword, user.getPassword())) {
                 log.error("로그인 성공");
                 session.setAttribute("userId", userId);
-                return "/";
+                return "redirect:/";
             }
             message = "비밀번호를 확인해주세요";
         }
@@ -67,7 +63,7 @@ public class UserController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.removeAttribute("userId");
-        return "/";
+        return "redirect:/";
     }
 
     @PostMapping("/register")

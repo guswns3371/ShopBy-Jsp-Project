@@ -22,6 +22,7 @@
             <%
                 List<ItemDto> itemList = (List<ItemDto>) request.getAttribute("itemList");
                 for (ItemDto itemDto : itemList) {
+
             %>
             <div class="col mb-5">
                 <div class="card h-100">
@@ -32,12 +33,12 @@
                         <div class="text-center">
                             <!-- Product name-->
                             <span class="fw-bolder">
-                                <a class="nav-link active" href="<%=itemDto.getItemUrl()%>>">
+                                <a class="nav-link active" href="/item<%=itemDto.getItemUrl()%>">
                                     <%=itemDto.getName()%>
                                 </a>
                             </span>
                             <!-- Product price-->
-                            <%=itemDto.getPrice()%>
+                            <%=itemDto.getSplitPrice()%> 원
                         </div>
                     </div>
                     <!-- Product actions-->

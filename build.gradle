@@ -40,6 +40,10 @@ dependencies {
 
     // jsoup for crawling
     implementation group: 'org.jsoup', name: 'jsoup', version: '1.11.3'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') { // JUnit5을 기본으로 설정
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine' // JUnit4 버전을 exclude
+    }
 }
 
 test {

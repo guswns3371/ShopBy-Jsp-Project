@@ -1,26 +1,23 @@
 package com.shopby.model.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class ItemDto {
-
-    private int id;
-    private String itemUrl;
-    private String imageUrl;
-    private String name;
+public class ItemInfoDto {
+    private String itemImageUrl;
     private String brand;
+    private String name;
     private int price;
+    private String information;
 
     @Builder
-    public ItemDto(String itemUrl, String imageUrl, String name, String brand, int price) {
-        this.itemUrl = itemUrl;
-        this.imageUrl = imageUrl;
-        this.name = name;
+    public ItemInfoDto(String itemImageUrl, String brand, String name, int price, String information) {
+        this.itemImageUrl = itemImageUrl;
         this.brand = brand;
+        this.name = name;
         this.price = price;
+        this.information = information;
     }
 
     public String getSplitPrice() {

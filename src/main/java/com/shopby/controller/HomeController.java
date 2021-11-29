@@ -20,7 +20,7 @@ public class HomeController {
 
     @GetMapping
     public String home(ModelMap model) throws IOException {
-        List<ItemDto> itemDtoList = crawlService.shoppingItemDtoList();
+        List<ItemDto> itemDtoList = crawlService.wConcept();
         model.addAttribute("itemList", itemDtoList);
         return "home";
     }
