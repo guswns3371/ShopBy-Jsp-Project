@@ -1,10 +1,7 @@
 package com.shopby.model;
 
 import com.shopby.model.dto.ItemDto;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +12,7 @@ import javax.persistence.Id;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@ToString
 public class Item {
 
     @Id
@@ -31,12 +29,35 @@ public class Item {
     @Column(nullable = false)
     private int price;
 
-    private String imagePath;
+    private String image;
+    private String thumbnailImage;
 
-    public Item(ItemDto dto) {
-        this.name = dto.getName();
-        this.brand = dto.getBrand();
-        this.price = dto.getPrice();
-        this.imagePath = dto.getImageUrl();
+    @Column(columnDefinition = "LONGTEXT")
+    private String information;
+
+    @Builder
+    public Item(String brand, String name, int price, String image, String thumbnailImage, String information) {
+        this.brand = brand;
+        this.name = name;
+        this.price = price;
+        this.image = image;
+        this.thumbnailImage = thumbnailImage;
+        this.information = information;
+    }
+
+    public String getSplitPrice() {
+        StringBuilder builder = new StringBuilder();
+        String strPrice = Integer.toString(price);
+        int i = strPrice.length() % 3;
+        builder.append(strPrice, 0, i);
+
+        while (i < strPrice.length()) {
+            if (!builder.toString().equals("")) {
+                builder.append(",");
+            }
+            builder.append(strPrice, i, i + 3);
+            i += 3;
+        }
+        return builder.toString();
     }
 }

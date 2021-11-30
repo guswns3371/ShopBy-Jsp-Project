@@ -558,6 +558,17 @@ progress {
   }
 }
 
+.display-7 {
+  font-size: calc(1.205rem + 1.5vw);
+  font-weight: 150;
+  line-height: 1.0;
+}
+@media (min-width: 1200px) {
+  .display-7 {
+    font-size: 1.6rem;
+  }
+}
+
 .list-unstyled {
   padding-left: 0;
   list-style: none;
@@ -685,6 +696,11 @@ progress {
 
 .col {
   flex: 1 0 0%;
+}
+
+.col img {
+  max-width:100%;
+  max-height:100%;
 }
 
 .row-cols-auto > * {
@@ -11285,4 +11301,14 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+
+.added-cart {
+  color: #ffffff;
+  background-color: #212529;
+}
+
+.removed-cart {
+  color: #212529;
+  background-color: #FFFFFF;
 }

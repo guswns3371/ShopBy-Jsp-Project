@@ -19,7 +19,9 @@ public class EncodingFilter extends OncePerRequestFilter {
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain filterChain) throws ServletException, IOException {
         //요청과 응답 한글 처리...
 //        request.setCharacterEncoding("UTF-8");
 //        response.setContentType("text/html;charset=utf-8");

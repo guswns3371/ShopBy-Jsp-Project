@@ -8,7 +8,7 @@
     <title>ShopBy</title>
     <link rel="icon" type="image/x-icon" href="/resources/assets/favicon.ico">
     <link rel="stylesheet" href="/resources/css/styles.css" type="text/css">
-</head>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script></head>
 <body>
 <jsp:include page="common/nav.jsp"></jsp:include>
 
