@@ -6,9 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -17,7 +15,7 @@ import java.util.Map;
 public class ItemRestController {
 
     @RequestMapping(value = "/item/cart/{id}", method = RequestMethod.POST)
-    public String addToCart(@PathVariable("id") Long itemId,
+    public boolean addToCart(@PathVariable("id") Long itemId,
                             @RequestBody Map<String, Object> map,
                             HttpSession session,
                             HttpServletRequest request) {
@@ -25,6 +23,7 @@ public class ItemRestController {
         String userId = (String) map.get("userId");
         int itemCount = (int) map.get("itemCount");
         HashMap<Long, Integer> sessions = (HashMap<Long, Integer>) session.getAttribute("cart" + userId);
+
         if (sessions == null) {
             HashMap<Long, Integer> cart = new HashMap<>();
             cart.put(itemId, itemCount);
@@ -34,11 +33,11 @@ public class ItemRestController {
             session.setAttribute("cart" + userId, sessions);
         }
 
-        return "true";
+        return true;
     }
 
     @RequestMapping(value = "/item/cart/{id}", method = RequestMethod.DELETE)
-    public String removeFromCart(@PathVariable("id") Long itemId,
+    public boolean removeFromCart(@PathVariable("id") Long itemId,
                                  @RequestBody Map<String, Object> map,
                                  HttpSession session,
                                  HttpServletRequest request) {
@@ -50,6 +49,6 @@ public class ItemRestController {
             session.setAttribute("cart" + userId, sessions);
         }
 
-        return "true";
+        return true;
     }
 }

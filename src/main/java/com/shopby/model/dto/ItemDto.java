@@ -20,4 +20,5 @@ public class ItemDto {
         this.brand = entity.getBrand();
         this.price = entity.getSplitPrice();
     }
+
 }

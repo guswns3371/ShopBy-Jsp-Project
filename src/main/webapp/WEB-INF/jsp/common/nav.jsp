@@ -1,5 +1,3 @@
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
          isELIgnored="false" %>
@@ -39,9 +37,10 @@
             %>
             <form class="d-flex">
                 <a class="btn btn-outline-dark" href="/cart/<%=userId%>">
-                    <i class="bi-cart-fill me-1"></i>
-                    🛒 <span id="userId"><%=userId%></span>
+                    <i class="bi-delivery-fill me-1"></i>
+                     <span id="userId"><%=userId%></span>
                     <span class="badge bg-dark text-white ms-1 rounded-pill">
+                        🛒
                         <span id="cartCount">
                             <%
                                 if (cart == null) {

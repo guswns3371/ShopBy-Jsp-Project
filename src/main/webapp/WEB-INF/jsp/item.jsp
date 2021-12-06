@@ -44,11 +44,11 @@
                 %>
                 <div class="d-flex">
                     <label for="inputQuantity"></label>
-                    <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1"
-                                                              style="max-width: 3rem" />
+                    <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" min="0"
+                           style="max-width: 4rem"/>
                     <a id="<%=itemInfo.getId()%>" class="btn btn-outline-dark flex-shrink-0"
                        onclick="addToCart(this)">
-                        <i class="bi-cart-fill me-1"></i>
+                        <i class="bi-delivery-fill me-1"></i>
                         <%
                             if (cart != null && cart.containsKey(itemInfo.getId())) {
                                 out.println("<span class=\"added-cart\">");
@@ -124,7 +124,7 @@
         <%--                    </div>--%>
         <%--                    <!-- Product actions-->--%>
         <%--                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">--%>
-        <%--                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>--%>
+        <%--                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to delivery</a></div>--%>
         <%--                    </div>--%>
         <%--                </div>--%>
         <%--            </div>--%>
@@ -147,7 +147,7 @@
         <%--                    </div>--%>
         <%--                    <!-- Product actions-->--%>
         <%--                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">--%>
-        <%--                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>--%>
+        <%--                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to delivery</a></div>--%>
         <%--                    </div>--%>
         <%--                </div>--%>
         <%--            </div>--%>
@@ -174,7 +174,7 @@
         <%--                    </div>--%>
         <%--                    <!-- Product actions-->--%>
         <%--                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">--%>
-        <%--                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>--%>
+        <%--                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to delivery</a></div>--%>
         <%--                    </div>--%>
         <%--                </div>--%>
         <%--            </div>--%>

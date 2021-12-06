@@ -1,12 +1,13 @@
 package com.shopby.model;
 
-import com.shopby.model.dto.ItemDto;
+import com.shopby.utils.StringSplitBuilder;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Entity
@@ -35,6 +36,9 @@ public class Item {
     @Column(columnDefinition = "LONGTEXT")
     private String information;
 
+    @OneToMany(mappedBy = "item", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PayHistory> payHistories = new ArrayList<>();
+
     @Builder
     public Item(String brand, String name, int price, String image, String thumbnailImage, String information) {
         this.brand = brand;
@@ -46,18 +50,21 @@ public class Item {
     }
 
     public String getSplitPrice() {
-        StringBuilder builder = new StringBuilder();
-        String strPrice = Integer.toString(price);
-        int i = strPrice.length() % 3;
-        builder.append(strPrice, 0, i);
+        return StringSplitBuilder.getSplitPrice(price);
+    }
 
-        while (i < strPrice.length()) {
-            if (!builder.toString().equals("")) {
-                builder.append(",");
-            }
-            builder.append(strPrice, i, i + 3);
-            i += 3;
-        }
-        return builder.toString();
+    public List<Item> getItems(Delivery delivery) {
+        return payHistories.stream()
+                .filter(p-> p.getDelivery().equals(delivery))
+                .map(PayHistory::getItem)
+                .collect(Collectors.toList());
+    }
+
+    public List<Delivery> getCart(Item item, LocalDateTime time) {
+        return payHistories.stream()
+                .filter(p -> p.getItem().equals(item))
+                .map(PayHistory::getDelivery)
+                .filter(d -> d.getCreatedData().equals(time))
+                .collect(Collectors.toList());
     }
 }
