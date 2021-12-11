@@ -47,14 +47,17 @@ public class ItemService {
         }
         return new ArrayList<>(optional.get());
     }
+
     public List<CartItemDto> findCartItemsByIdList(HashMap<Long, Integer> cart) {
+        if (cart == null)
+            return new ArrayList<>();
         List<Long> idList = new ArrayList<>(cart.keySet());
         Optional<ArrayList<Item>> optional = itemRepository.findItemsByIdIn(idList);
         if (optional.isEmpty()) {
             throw new IllegalStateException("존재하지 않는 아이템들 = " + idList);
         }
         return optional.get().stream()
-                .map(i-> new CartItemDto(i, cart))
+                .map(i -> new CartItemDto(i, cart))
                 .collect(Collectors.toList());
     }
 }

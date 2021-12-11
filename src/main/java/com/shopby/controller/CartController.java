@@ -1,6 +1,7 @@
 package com.shopby.controller;
 
 import com.shopby.model.dto.CartItemDto;
+import com.shopby.model.dto.DeliveryDto;
 import com.shopby.service.DeliveryService;
 import com.shopby.service.ItemService;
 import lombok.RequiredArgsConstructor;
@@ -34,9 +35,12 @@ public class CartController {
         return "cart";
     }
 
-    @GetMapping("/history/{id}")
+    @GetMapping("/delivery/{id}")
     public String deliveryHistory(@PathVariable("id") String userId,
                                   ModelMap model) {
 
+        List<DeliveryDto> deliveryHistory = deliveryService.getDeliveryHistory(userId);
+        model.addAttribute("deliveryHistory", deliveryHistory);
+        return "deliveryHistory";
     }
 }

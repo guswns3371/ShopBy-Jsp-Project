@@ -22,6 +22,10 @@
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row">
 
+            <%
+                List<CartItemDto> cartItemDtoList = (List<CartItemDto>) request.getAttribute("cartItems");
+                if (cartItemDtoList.size() > 0) {
+            %>
             <div class="col-12 col-lg">
                 <div class="card">
                     <div class="card-body">
@@ -40,7 +44,7 @@
                                 <tbody id="cartList">
 
                                 <%
-                                    for (CartItemDto cartItem : (List<CartItemDto>) request.getAttribute("cartItems")) {
+                                    for (CartItemDto cartItem : cartItemDtoList) {
                                         String price = StringSplitBuilder.getSplitPrice(cartItem.getPrice());
                                 %>
                                 <tr>
@@ -97,7 +101,18 @@
                     </div>
                 </div>
             </div>
+            <%
+                } else {
+                    out.println("장바구니가 비어있습니다.");
+                }
 
+                String userId = (String) session.getAttribute("userId");
+                if (userId != null) {
+            %>
+            <a class="btn btn-primary" href="/cart/delivery/<%=userId%>">배송 현황</a>
+            <%
+                }
+            %>
         </div>
     </div>
 </section>

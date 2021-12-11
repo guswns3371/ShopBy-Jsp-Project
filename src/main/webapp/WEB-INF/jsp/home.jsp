@@ -44,21 +44,6 @@
                             <%=itemDto.getPrice()%> 원
                         </div>
                     </div>
-                    <!-- Product actions-->
-<%--                    <%--%>
-<%--                        if (session.getAttribute("userId") != null) {--%>
-<%--                    %>--%>
-<%--                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">--%>
-<%--                        <div class="text-center">--%>
-<%--                            <a id="<%=itemDto.getId()%>" class="btn btn-outline-dark mt-auto"--%>
-<%--                               onclick="addToCart(this)">--%>
-<%--                                장바구니에 담기--%>
-<%--                            </a>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <%--%>
-<%--                        }--%>
-<%--                    %>--%>
                 </div>
             </div>
             <%

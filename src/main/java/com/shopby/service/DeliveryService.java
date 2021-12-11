@@ -4,6 +4,7 @@ import com.shopby.model.Delivery;
 import com.shopby.model.Item;
 import com.shopby.model.PayHistory;
 import com.shopby.model.User;
+import com.shopby.model.dto.DeliveryDto;
 import com.shopby.repository.DeliveryRepository;
 import com.shopby.repository.PayHistoryRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -26,12 +27,7 @@ public class DeliveryService {
 
     @Transactional
     public void checkout(String userId, List<Long> itemIds, List<Integer> itemCounts) {
-        Optional<User> optionalUser = userService.findByUserId(userId);
-        if (optionalUser.isEmpty()) {
-            throw new IllegalStateException("존재하지 않는 유저입니다 = " + userId);
-        }
-
-        User user = optionalUser.get();
+        User user = userService.findByUserId(userId);
         List<Item> items = itemService.findItemsByIdList(itemIds);
 
         int totalPrice = getTotalPrice(itemCounts, items);
@@ -40,7 +36,6 @@ public class DeliveryService {
         List<PayHistory> payHistories = getPayHistories(itemCounts, items, delivery);
         payHistoryRepository.saveAll(payHistories);
     }
-
 
     private List<PayHistory> getPayHistories(List<Integer> itemCounts, List<Item> items, Delivery delivery) {
         List<PayHistory> payHistories = new ArrayList<>();
@@ -56,5 +51,14 @@ public class DeliveryService {
             totalPrice += items.get(i).getPrice() * itemCounts.get(i);
         }
         return totalPrice;
+    }
+
+    public List<DeliveryDto> getDeliveryHistory(String userId) {
+        User user = userService.findByUserId(userId);
+        List<Delivery> deliveryList = deliveryRepository.findDeliveriesByUserOrderByCreatedDataDesc(user);
+        return deliveryList.stream()
+                .map(DeliveryDto::new)
+                .collect(Collectors.toList());
+
     }
 }

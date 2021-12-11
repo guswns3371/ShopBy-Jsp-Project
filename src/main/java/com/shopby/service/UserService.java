@@ -20,8 +20,17 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public Optional<User> findByUserId(String userId) {
+    public Optional<User> findByUserIdOptional(String userId) {
         return userRepository.findUserByUserId(userId);
+    }
+
+    public User findByUserId(String userId) {
+        Optional<User> optionalUser = findByUserIdOptional(userId);
+        if (optionalUser.isEmpty()) {
+            throw new IllegalStateException("존재하지 않는 유저입니다 = " + userId);
+        }
+
+        return optionalUser.get();
     }
 
     public boolean checkLoginData(String userId, String userPassword) {

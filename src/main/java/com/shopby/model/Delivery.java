@@ -27,7 +27,7 @@ public class Delivery extends BaseTimeEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "delivery", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "delivery", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<PayHistory> payHistories = new ArrayList<>();
 
     public Delivery(User user, int totalPrice) {
@@ -48,4 +48,5 @@ public class Delivery extends BaseTimeEntity {
                 .map(PayHistory::getItem)
                 .collect(Collectors.toList());
     }
+
 }

@@ -7,7 +7,6 @@ import lombok.Data;
 public class ItemDto {
 
     private Long id;
-    private String itemUrl;
     private String thumbnail;
     private String name;
     private String brand;

@@ -73,7 +73,7 @@ function checkout() {
                 contentType: 'application/json',
                 success: function (data) {
                     alert("장바구니에서 상품을 구매하였습니다.");
-                    location.href = "/cart/history/" + userId.innerText;
+                    location.href = "/cart/delivery/" + userId.innerText;
                 }
             }
         );

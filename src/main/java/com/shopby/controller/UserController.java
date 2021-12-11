@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -45,7 +44,7 @@ public class UserController {
         String message;
 
         log.error(userId + " " + userPassword);
-        Optional<User> optionalUser = userService.findByUserId(userId);
+        Optional<User> optionalUser = userService.findByUserIdOptional(userId);
 
         if (optionalUser.isEmpty()) {
             message = "아이디를 확인해주세요";
